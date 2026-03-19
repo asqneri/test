@@ -1,85 +1,123 @@
+<?php
+$message = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $name = $_POST["name"];
+    $password = $_POST["password"];
+    $confirm = $_POST["confirm"];
+    $email = $_POST["email"];
+    $gender = $_POST["gender"] ?? "";
+
+    if ($password != $confirm) {
+        $message = "Пароли не совпадают";
+    } elseif (empty($name) || empty($password) || empty($email) || empty($gender)) {
+        $message = "Заполните все поля";
+    } else {
+        $message = "Регистрация успешна!";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PHP задания</title>
+    <title>Регистрация</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #9f655f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .message {
+            text-align: center;
+            margin-bottom: 10px;
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
 </head>
+
 <body>
 
-<?php
-// 1
-$str = "Пример строки";
-$num = 25;
-$bool = true;
-$empty = null;
+<div class="form-box">
+    <h2>Регистрация</h2>
 
-echo "Строка: $str, тип - " . gettype($str) . "<br>";
-echo "Число: $num, тип - " . gettype($num) . "<br>";
-echo "Логическое значение: $bool, тип - " . gettype($bool) . "<br>";
-echo "Null значение, тип - " . gettype($empty) . "<br><br>";
+    <?php if ($message != ""): ?>
+        <div class="message <?php echo ($message == 'Регистрация успешна!') ? 'success' : ''; ?>">
+            <?php echo $message; ?>
+        </div>
+    <?php endif; ?>
 
+    <form method="post">
+        <label>Имя:</label>
+        <input type="text" name="name">
 
-// 2
-echo "<h1>Кадакова</h1>";
+        <label>Пароль:</label>
+        <input type="password" name="password">
 
+        <label>Подтверждение пароля:</label>
+        <input type="password" name="confirm">
 
-// 3
-$condition = false;
+        <label>Email:</label>
+        <input type="email" name="email">
 
-if ($condition) {
-    echo "<p>
-    Текст если true
-    </p>";
-} else {
-    echo '<img src="anim.gif" alt="gif">';
-}
+        <label>Пол:</label>
+        <select name="gender">
+            <option value="">-- Выберите пол --</option>
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+            <option value="other">Другой</option>
+        </select>
 
-
-// 4
-$a = 5;
-$s = $a * $a;
-
-echo "<br>Площадь квадрата: $s <br>";
-
-
-// 5
-$a = 4;
-$b = 6;
-$p = 2 * ($a + $b);
-
-echo "Периметр прямоугольника: $p <br>";
-
-
-// 6
-echo "<i>Это текст, написанный курсивом.</i><br><br>";
-
-
-// 7
-for ($i = 1; $i <= 9; $i++) {
-    echo $i . "<br>";
-}
-
-
-// 8
-$string = "Programming";
-echo "<br>Последний символ строки: " . substr($string, -1) . "<br>";
-
-
-// 9
-$num = 47;
-$num += 7;
-$num -= 18;
-$num *= 10;
-$num /= 15;
-
-echo "Результат сокращенных операций: $num <br>";
-
-
-// 10
-$seconds = 24 * 60 * 60;
-echo "Количество секунд в сутках: $seconds";
-
-?>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+</div>
 
 </body>
 </html>
