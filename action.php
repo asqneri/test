@@ -1,9 +1,13 @@
 <?php
+if (!isset($_POST["email"]) || !isset($_POST["password"])) {
+    echo "Ошибка: форма отправлена не корректно";
+    exit;
+}
 
-$name = $_POST["name"];
-$password = $_POST["password"];
-$confirm = $_POST["confirm"];
 $email = $_POST["email"];
+$password = $_POST["password"];
+$confirm = $_POST["confirm"] ?? "";
+$name = $_POST["name"] ?? "";
 $gender = $_POST["gender"] ?? "";
 
 ?>
@@ -21,15 +25,14 @@ $gender = $_POST["gender"] ?? "";
     <h2>Результат регистрации</h2>
 
     <?php
-    if ($password != $confirm) {
+    if (empty($email) || empty($password)) {
+        echo "<p class='message'>Поля Email и Пароль обязательны!</p>";
+    }
+    elseif ($password != $confirm) {
         echo "<p class='message'>Пароли не совпадают</p>";
-    } elseif (empty($name) || empty($password) || empty($email) || empty($gender)) {
-        echo "<p class='message'>Заполните все поля</p>";
     } else {
         echo "<p class='success'>Регистрация успешна!</p>";
-        echo "<p>Имя: $name</p>";
         echo "<p>Email: $email</p>";
-        echo "<p>Пол: $gender</p>";
     }
     ?>
 
