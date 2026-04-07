@@ -1,11 +1,5 @@
 <?php
-$file = "folder/world.txt";
-$bytes = filesize($file);
-$mb = $bytes / 1024 / 1024;
-$gb = $bytes / 1024 / 1024 / 1024;
+unlink("folder/world.txt");
 
-echo "Размер файла:<br>";
-echo "В байтах: " . $bytes . "<br>";
-echo "В мегабайтах: " . $mb . "<br>";
-echo "В гигабайтах: " . $gb . "<br>";
+echo "Файл world.txt удалён";
 ?>
