@@ -1,19 +1,17 @@
 <?php
 try {
-    $a = 10;
-    $b = 0;
+    $countries = array(
+        'Spain' => 'Madrid',
+        'Russia' => 'Moscow'
+    );
 
-    if ($b == 0) {
-        throw new Exception("Ошибка: деление на ноль");
+    if ($countries['Germany'] == '') {
+        throw new Exception("Элемент Germany не существует");
     }
 
-    echo $a / $b;
+    echo $countries['Germany'];
 }
 catch (Exception $ex) {
-    $file = fopen("log.txt", "w");
-    fwrite($file, $ex->getMessage());
-    fclose($file);
-
-    echo "Сообщение об ошибке записано в log.txt";
+    echo $ex->getMessage();
 }
 ?>
