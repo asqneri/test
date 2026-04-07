@@ -1,5 +1,11 @@
 <?php
-copy("folder/mir.txt", "folder/world.txt");
+$file = "folder/world.txt";
+$bytes = filesize($file);
+$mb = $bytes / 1024 / 1024;
+$gb = $bytes / 1024 / 1024 / 1024;
 
-echo "Копия файла создана: world.txt";
+echo "Размер файла:<br>";
+echo "В байтах: " . $bytes . "<br>";
+echo "В мегабайтах: " . $mb . "<br>";
+echo "В гигабайтах: " . $gb . "<br>";
 ?>
