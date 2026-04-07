@@ -1,5 +1,5 @@
 <?php
-unlink("folder/world.txt");
+echo file_exists("folder/world.txt") ? "world.txt существует<br>" : "world.txt не существует<br>";
 
-echo "Файл world.txt удалён";
+echo file_exists("folder/mir.txt") ? "mir.txt существует<br>" : "mir.txt не существует<br>";
 ?>
