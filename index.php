@@ -1,7 +1,7 @@
 <?php
-$file = fopen("test.txt", "w");
-fwrite($file, "Привет, мир!");
+$file = fopen("test.txt", "r");
+$text = fgets($file);
 fclose($file);
 
-echo "Файл test.txt создан";
+echo "Содержимое файла: " . $text;
 ?>
