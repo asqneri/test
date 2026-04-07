@@ -1,5 +1,5 @@
 <?php
-mkdir("test");
+rename("test", "www");
 
-echo "Папка test создана";
+echo "Папка test переименована в www";
 ?>
