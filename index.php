@@ -1,6 +1,17 @@
 <?php
-$week = array('воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота');
+$date1 = $_POST['date1'];
+$date2 = $_POST['date2'];
 
-echo "Сегодня: " . $week[date('w')] . "<br>";
-echo "12.06.2016: " . $week[date('w', mktime(0, 0, 0, 6, 12, 2016))];
+if ($date1 > $date2) {
+    echo $date1;
+}
+else {
+    echo $date2;
+}
 ?>
+
+<form method="post">
+    <input type="text" name="date1" placeholder="гггг-мм-дд">
+    <input type="text" name="date2" placeholder="гггг-мм-дд">
+    <button type="submit">Сравнить</button>
+</form>
