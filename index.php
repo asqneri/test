@@ -1,5 +1,11 @@
 <?php
-rmdir("www");
+$folders = ["one", "two", "three"];
+mkdir("test");
 
-echo "Папка www удалена";
+foreach ($folders as $f) {
+    $path = "test/" . $f;
+    mkdir($path);
+}
+
+echo "Папки созданы";
 ?>
