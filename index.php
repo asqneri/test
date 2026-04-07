@@ -3,7 +3,7 @@
 class Rabotnik
 {
     public $name;
-    public $age;
+    private $age;
     public $salary;
 
     public function __construct($name, $age, $salary)
@@ -13,15 +13,25 @@ class Rabotnik
         $this->salary = $salary;
     }
 
-    public function getSalary($worker)
+    public function setAge($age)
     {
-        return $this->salary + $worker->salary;
+        if ($age >= 18) {
+            $this->age = $age;
+        } else {
+            echo "Вам работать в нашей компании еще рано";
+        }
+    }
+
+    public function getAge()
+    {
+        return $this->age;
     }
 }
 
 $worker1 = new Rabotnik("Анна", 25, 30000);
-$worker2 = new Rabotnik("Иван", 30, 40000);
+$worker1->setAge(20);
+echo $worker1->getAge() . "<br>";
 
-echo "Сумма зарплат: " . $worker1->getSalary($worker2);
+$worker1->setAge(16);
 
 ?>
