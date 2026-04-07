@@ -1,3 +1,3 @@
 <?php
-echo date('Y.m.d H:i:s');
+echo date('Y.m.d', mktime(0, 0, 0, 9, 1, date('Y')));
 ?>
