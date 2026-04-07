@@ -1,5 +1,5 @@
 <?php
-rename("test", "www");
+rmdir("www");
 
-echo "Папка test переименована в www";
+echo "Папка www удалена";
 ?>
