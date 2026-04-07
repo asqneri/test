@@ -13,20 +13,35 @@ class Rabotnik
         $this->salary = $salary;
     }
 
-    public function checkAge()
+    private function checkAge($age)
     {
-        if ($this->age > 18) {
+        if ($age >= 18) {
             return true;
         } else {
             return false;
         }
     }
+
+    public function setAge($age)
+    {
+        if ($this->checkAge($age) == true) {
+            $this->age = $age;
+        } else {
+            echo "Вам работать в нашей компании еще рано";
+        }
+    }
+
+    public function getAge()
+    {
+        return $this->age;
+    }
 }
 
 $worker1 = new Rabotnik("Анна", 25, 30000);
-$worker2 = new Rabotnik("Иван", 17, 40000);
 
-echo $worker1->checkAge() . "<br>";
-echo $worker2->checkAge();
+$worker1->setAge(22);
+echo $worker1->getAge() . "<br>";
+
+$worker1->setAge(15);
 
 ?>
