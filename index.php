@@ -1,13 +1,19 @@
 <?php
 try {
-    $file = @fopen("no_file.txt", "r");
+    $a = 10;
+    $b = 0;
 
-    if (!$file) {
-        throw new Exception("Не удалось открыть несуществующий файл no_file.txt");
+    if ($b == 0) {
+        throw new Exception("Ошибка: деление на ноль");
     }
 
+    echo $a / $b;
+}
+catch (Exception $ex) {
+    $file = fopen("log.txt", "w");
+    fwrite($file, $ex->getMessage());
     fclose($file);
-} catch (Exception $ex) {
-    echo "Ошибка: " . $ex->getMessage();
+
+    echo "Сообщение об ошибке записано в log.txt";
 }
 ?>
