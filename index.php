@@ -1,3 +1,3 @@
 <?php
-echo mktime(10, 25, 0, 3, 15, 2025);
+echo time() - mktime(8, 5, 59, 10, 2, 1990);
 ?>
