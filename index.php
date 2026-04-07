@@ -1,6 +1,5 @@
 <?php
-mkdir("folder");
-rename("mir.txt", "folder/mir.txt");
+copy("folder/mir.txt", "folder/world.txt");
 
-echo "Папка folder создана, файл mir.txt перемещён в нее";
+echo "Копия файла создана: world.txt";
 ?>
