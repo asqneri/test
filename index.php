@@ -1,11 +1,7 @@
 <?php
-$folders = ["one", "two", "three"];
-mkdir("test");
+$files = glob("*.jpg");
 
-foreach ($folders as $f) {
-    $path = "test/" . $f;
-    mkdir($path);
+foreach ($files as $f) {
+    echo "<img src='$f'>";
 }
-
-echo "Папки созданы";
 ?>
