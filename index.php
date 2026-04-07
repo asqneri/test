@@ -1,17 +1,3 @@
 <?php
-try {
-    $countries = array(
-        'Spain' => 'Madrid',
-        'Russia' => 'Moscow'
-    );
-
-    if ($countries['Germany'] == '') {
-        throw new Exception("Элемент Germany не существует");
-    }
-
-    echo $countries['Germany'];
-}
-catch (Exception $ex) {
-    echo $ex->getMessage();
-}
+echo mktime(10, 25, 0, 3, 15, 2025);
 ?>
