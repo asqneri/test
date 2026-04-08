@@ -7,18 +7,8 @@ class Page
 
     public function __construct()
     {
-        $this->name = "music";
-        $this->template = "
-        <div>
-            <iframe style='border-radius:12px'
-                    width='100%'
-                    src='https://open.spotify.com/embed/track/4l3z5vr4sgHuY6IMWzsgnN?si=5bd09bb21f404bf1'
-                    height='152'
-                    frameBorder='0'
-                    allowfullscreen=''
-                    allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'>
-                    </iframe>
-        </div>";
+        $this->name = "page";
+        $this->template = "Сделайте выбор";
     }
 
     public function render(): void
@@ -52,12 +42,45 @@ class BlogPage extends Page
     }
 }
 
-$page = new Page();
-$page->render();
+class MusicPage extends Page
+{
+    public function __construct()
+    {
+        $this->name = "music";
+        $this->template = "
+        <div>
+            <iframe style='border-radius:12px'
+                    width='100%'
+                    src='https://open.spotify.com/embed/track/4l3z5vr4sgHuY6IMWzsgnN?si=5bd09bb21f404bf1'
+                    height='152'
+                    frameBorder='0'
+                    allowfullscreen=''
+                    allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'>
+                    </iframe>
+        </div>
+        ";
+    }
+}
 
-echo "<br><br>";
+echo "<a href='?page=page'>Home</a><br>";
+echo "<a href='?page=music'>Music</a><br>";
+echo "<a href='?page=blog'>Blog</a><br><br>";
 
-$blog = new BlogPage();
-$blog->render();
+if (isset($_GET['page'])) {
+    if ($_GET['page'] == 'page') {
+        $page = new Page();
+        $page->render();
+    }
+
+    if ($_GET['page'] == 'blog') {
+        $page = new BlogPage();
+        $page->render();
+    }
+
+    if ($_GET['page'] == 'music') {
+        $page = new MusicPage();
+        $page->render();
+    }
+}
 
 ?>
